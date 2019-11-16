@@ -14,7 +14,7 @@ getTriangleValue(phase) = ba.if((phase < 0.5f), -1.0f + (phase * 4.0f), 1.0f - (
 // ---------------------------------------------------------------------
 StereoPanner(panPosition) = _ <: *(leftLevel), *(rightLevel)
 with {
-	leftLevel = (1.0f - panPosition) / 2.0f;
+    leftLevel = (1.0f - panPosition) / 2.0f;
     rightLevel = 1.0f - leftLevel;
 };
 
