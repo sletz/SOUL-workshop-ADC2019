@@ -18,22 +18,22 @@ ChorusVoice(initialPhase, panPosition) = (Oscillator(initialPhase), _) : Delay :
 // ---------------------------------------------------------------------
 DryWetMixer = vgroup("Dry_wet", (_,_,_) : route(3, 4, (1,1), (1,3), (2,2), (3,4)) : (mixer, mixer))
 with {
-	mixer(dry, wet) = (dryLevel * 0.01f * dry) + (wetLevel * 0.01f * wet);
-	dryLevel = hslider("Dry Level", 100, 0, 100, 0.1);
-	wetLevel = hslider("Wet Level", 50, 0, 100, 0.1);
+    mixer(dry, wet) = (dryLevel * 0.01f * dry) + (wetLevel * 0.01f * wet);
+    dryLevel = hslider("Dry Level", 100, 0, 100, 0.1);
+    wetLevel = hslider("Wet Level", 50, 0, 100, 0.1);
 };
 
 // ---------------------------------------------------------------------
 Delay(modulationIn) = de.fdelay(16384, delaySamples)
 with {
-	samplesPerMs = float(ma.SR / 1000.0f);
-	delaySamples = delayLength * samplesPerMs * (1.0f + modulationIn) + 1.0f;
+    samplesPerMs = float(ma.SR / 1000.0f);
+    delaySamples = delayLength * samplesPerMs * (1.0f + modulationIn) + 1.0f;
 };
 
 // ---------------------------------------------------------------------
 StereoPanner(panPosition) = _ <: *(leftLevel), *(rightLevel)
 with {
-	leftLevel = (1.0f - panPosition) / 2.0f;
+    leftLevel = (1.0f - panPosition) / 2.0f;
     rightLevel = 1.0f - leftLevel;
 };
 
@@ -49,8 +49,8 @@ with {
 // ---------------------------------------------------------------------
 Chorus =  _ <: (_, voice1, voice2) : route(5, 3, (1,1), (2,2), (3,3), (4,2), (5,3)) : DryWetMixer
 with {
-	voice1 = ChorusVoice(0.0f, -1.0f);
-	voice2 = ChorusVoice(0.5f, 1.0f);
+    voice1 = ChorusVoice(0.0f, -1.0f);
+    voice2 = ChorusVoice(0.5f, 1.0f);
 };
 
 //======
