@@ -46,11 +46,15 @@ with {
     fast_fmod(x, y) = x - (y * float(int(x/y)));
 };
 
+// ---------------------------------------------------------------------
+Chorus =  _ <: (_, voice1, voice2) : route(5, 3, (1,1), (2,2), (3,3), (4,2), (5,3)) : DryWetMixer
+with {
+    voice1 = ChorusVoice(0.0f, -1.0f);
+    voice2 = ChorusVoice(0.5f, 1.0f);
+};
+
 //======
 // Main
 //======
 
-voice1 = ChorusVoice(0.0f, -1.0f);
-voice2 = ChorusVoice(0.5f, 1.0f);
-
-process = _ <: (_, voice1, voice2) : route(5, 3, (1,1), (2,2), (3,3), (4,2), (5,3)) : DryWetMixer;
+process = Chorus;
