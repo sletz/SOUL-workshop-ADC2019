@@ -3,7 +3,7 @@ import("stdfaust.lib");
 processor_period = 1.0f/ma.SR;
 
 modulationRate = hslider("Rate", 2, 0.1, 20, 0.1);
-modulationDepth = hslider("Depth", 50, 0, 100, 0.1) : si.smoo;
+modulationDepth = hslider("Depth", 25, 0, 100, 0.1) : si.smoo;
 modulationShape = nentry("Shape [style:menu{'sin':0;'triangle':1}]", 0, 0, 1, 1);
 delayLength = hslider("delayLength", 10, 1, 50, 1) : si.smoo;
 
