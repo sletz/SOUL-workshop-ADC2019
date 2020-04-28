@@ -28,5 +28,5 @@ with {
     drive = hslider("Drive", 1.0, 1.0, 50.0, 0.1);
 };
 
-//process = SineOsc : Waveshaper;
-process = SineOsc;
+process = SineOsc : Waveshaper;
+//process = SineOsc;
